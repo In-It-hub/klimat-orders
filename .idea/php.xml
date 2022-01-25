@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/lib/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/lib/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/lib/vendor/league/color-extractor" />
+      <path value="$PROJECT_DIR$/lib/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/lib/vendor/ksubileau/color-thief-php" />
+      <path value="$PROJECT_DIR$/lib/vendor/colinodell/json5" />
+      <path value="$PROJECT_DIR$/lib/vendor/claviska/simpleimage" />
+      <path value="$PROJECT_DIR$/lib/vendor/mongodb/mongodb" />
+      <path value="$PROJECT_DIR$/lib/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/lib/vendor/erusev/parsedown-extra" />
+      <path value="$PROJECT_DIR$/lib/vendor/composer" />
+      <path value="$PROJECT_DIR$/lib/vendor/maennchen/zipstream-php" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.3">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
+</project>
