@@ -3,6 +3,7 @@
  * __DIR__ Констант которая указывает текущую директорию
  * DIRECTORY_SEPARATOR - Предопределенная константа содержащая разделитель Для Windows это «\», для Linux и остальных — «/»
 */
+require_once 'config.php';
 session_start();
 const COCKPIT = 'http://cockpit/cockpit/';
 const ROOT = __DIR__ . DIRECTORY_SEPARATOR;

@@ -20,7 +20,7 @@
                     'password' => $_POST['password'],
                 ];
                 $data_string = json_encode($fields);
-                $url = COCKPIT . 'api/cockpit/authUser' . '?token=75654c11418a68626f30a88b74a51b';
+                $url = COCKPIT . 'api/cockpit/authUser' . '?token='.COCKPIT_TOKEN;
                 $ch = curl_init($url);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);

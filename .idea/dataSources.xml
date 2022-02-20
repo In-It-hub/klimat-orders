@@ -22,5 +22,19 @@
       <jdbc-url>jdbc:sqlite:C:\OpenServer\domains\cockpit\storage\data\cockpit.sqlite</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="collections [2]" uuid="a7497985-95a0-455f-ab2c-9c614ec7cf32">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\OpenServer\domains\cockpit\cockpit\storage\data\collections.sqlite</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="cockpit [2]" uuid="67b0b06f-4f3e-433a-b896-74517aca0154">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\OpenServer\domains\cockpit\cockpit\storage\data\cockpit.sqlite</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -1,7 +1,8 @@
+
 html,
 body {
-  height: 100%;
   background-color: #efefef;
+  overflow:inherit;
 }
 
 .px-1,

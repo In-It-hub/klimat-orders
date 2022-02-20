@@ -18,15 +18,18 @@
             <?php 
                 foreach ($menu['entries'] as $entry) {
                     if(in_array($_SESSION['group'], $entry['access'])){
-                        echo "<a class='navbar-item";
-                        if($entry['link'] == $action){
-                            echo " active";
-                        }
-                                echo "' href='/".$entry['link']."'>";
-                        echo $entry['icon'] . $entry['name'] ."</a>";
+                            echo "<a class='navbar-item'";
+                            if($entry['link'] == $action){
+                                echo " active";
+                            }
+                            echo "' href='/".$entry['link']."'>";
+                            echo $entry['icon'] . $entry['name'] ."</a>";
                     }
                 }
             ?>
+        </div>
+        <div class="navbar-end">
+            <a class="navbar-item" href="/logout"><i class="fa fa-sign-out"></i> Выйти</a>
         </div>
 
        <!-- <div class="navbar-end">

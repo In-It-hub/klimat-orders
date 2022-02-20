@@ -1,5 +1,41 @@
 var table;
 
+//Считываем города
+function read_city() {
+    let city;
+    $.ajax({
+        async: false,
+        url: 'city/read'
+    }).done(function(data) {
+        city = data
+    });
+    city = JSON.parse(city).data;
+    return city;
+}
+let city_table = read_city();
+
+for(let i = 0; i < city_table.length; i++) {
+    $("#city").append('<option value="'+city_table[i]["_id"]+'">'+city_table[i]["city_name"]+'</option>');
+}
+
+//Считываем статусы
+function read_status() {
+    let status;
+    $.ajax({
+        async: false,
+        url: 'status/read'
+    }).done(function(data) {
+        status = data
+    });
+    status = JSON.parse(status).data;
+    return status;
+}
+let status_table = read_status();
+for(let i = 0; i < status_table.length; i++) {
+    $("#status").append('<option value="'+status_table[i]["_id"]+'">'+status_table[i]["status_name"]+'</option>');
+}
+
+
 function show_orders(){
     table = $('#orders').DataTable({
         "processing": true,
@@ -46,7 +82,7 @@ function show_orders(){
         "columns": [
             { "title": "ID", "data": null, "orderable": false},
             { "title": "Дата", "data":"date", "orderable": false},
-            { "title": "Статус", "data": "status.display"  },
+            { "title": "Статус", "data":"status.display"},
             { "title": "Предварит. дата", "data": "work_start_date"  },
             { "title": "Время", "data": "time"  },
             { "title": "Город", "data": "city.display"  },
@@ -74,9 +110,19 @@ function show_orders(){
         "columnDefs": [
             { "searchPanes": {"show": true} }
         ],
-        "createdRow": function( row, data, dataIndex ) {   
-            console.log(data);    
-            $(row).addClass("has-text-black-bis "+data.status.color);
+        "createdRow": function( row, data, dataIndex, cells) {
+            /*$(cells[2]).append("<div class='select'><select class='select_status'>" +
+
+                $("#status").html() +
+                "</select></div>");*/
+            //$('option[value='+data.status._id+']').attr('selected', 'selected');
+            for (var i = 0; i < status_table.length; i++) {
+                if (status_table[i]._id == data.status._id) {
+                    $(row).addClass("has-text-black-bis " + status_table[i].color);
+
+                }
+            }
+
         },
         "language": {
             url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/ru.json'
@@ -159,27 +205,6 @@ function show_orders(){
 }
 show_orders();
 
-//заполняеться select данными из соответственнх таблиц
-function read_city_status_users() {
-    $.ajax({
-        url: 'orders/read_city_status_users',
-        method: 'POST',
-        dataType: 'json',
-        success: function(data){
-            for(var i = 0; i < Object.keys(data.city).length; i++) {
-                $("#city").append("<option value='"+data.city[i]._id+"'>"+data.city[i].city_name+"</option>");
-            }
-            for(var i = 0; i < Object.keys(data.status).length; i++) {
-                $("#status").append("<option value='"+data.status[i]._id+"'>"+data.status[i].status_name+"</option>");
-            }
-            status_users = data.status;
-            /*for(var i = 0; i < Object.keys(data.users).length; i++) {
-                $("#users").append("<option value='"+data.users[i]._id+"'>"+data.users[i].display+"</option>");
-            }*/
-        }
-    });
-}
-read_city_status_users();
 
 $(".reload").on('click', function(){
     table.ajax.reload( null, false ); 
@@ -204,11 +229,15 @@ $('#orders').on('click','tbody .edit', function() {
 
 //input data
 var date = new bulmaCalendar('input[name="date"]', {
+    lang: 'ru',
+    weekStart: 1,
     dateFormat: 'dd.MM.yyyy', // 01.01.2021
     showHeader: false,
     showFooter: false
 });
 var work_start_date = new bulmaCalendar('input[name="work_start_date"]', {
+    lang: 'ru',
+    weekStart: 1,
     dateFormat: 'dd.MM.yyyy', // 01.01.2021
     showHeader: false,
     showFooter: false
@@ -219,6 +248,7 @@ var day = d.getDate();
 var output = ((''+day).length<2 ? '0' : '') + day + '.' +
     ((''+month).length<2 ? '0' : '') + month + '.' +
     d.getFullYear();
+
 //Сохранение заказа
 $("#save").on('click', function(){
     if(date.value() !== '') {
