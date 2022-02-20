@@ -23,8 +23,10 @@ implode(Роздлитель, масив) - соединяет все элеме
 
 
 set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, $modules));
+spl_autoload_register(function ($class_name) {
+    include $class_name . '.php';
+});
 
-spl_autoload_register('spl_autoload', false);
 
 new Application();
 
