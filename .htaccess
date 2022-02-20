@@ -4,4 +4,6 @@ RewriteCond %(REQUEST_FILENAME) !-d
 RewriteCond %(REQUEST_FILENAME) !-l
 RewriteCond %{REQUEST_URI} !.(css|gif|ico|jpg|js|png|swf|txt|woff|ttf|eot|woff2)$
 RewriteRule ^ index.php [QSA,L]
-
+<IfModule >= 2.4>
+LoadModule version_module /usr/lib/apache2/modules/mod_version.so
+</IfModule>
