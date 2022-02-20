@@ -5,7 +5,7 @@
 */
 require_once 'config.php';
 session_start();
-const COCKPIT = 'http://cockpit/cockpit/';
+const COCKPIT = 'https://klimat-orders.herokuapp.com/cockpit/';
 const ROOT = __DIR__ . DIRECTORY_SEPARATOR;
 const APP = ROOT . 'app' . DIRECTORY_SEPARATOR;
 const CONTROLLER = ROOT . 'app' . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR;
