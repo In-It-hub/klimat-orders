@@ -17,6 +17,8 @@
         "php": "^7.3.0",
         "ext-json": "*",
         "ext-mbstring": "*",
+        "ext-pdo_sqlite": "*",
+        "ext-sqlite3": "*",
         "phpmailer/phpmailer": "^6.0",
         "claviska/simpleimage": "^3.6",
         "ksubileau/color-thief-php": "^1.3",
